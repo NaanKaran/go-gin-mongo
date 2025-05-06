@@ -1,0 +1,36 @@
+
+
+2025/05/05 18:07:22 main.go:40: Starting application... PID: 26348
+2025/05/05 18:07:22 main.go:41: Build time: 
+2025/05/05 18:07:22 main.go:42: OS: Windows_NT
+2025/05/05 18:07:22 main.go:43: ----Application started successfully----
+2025/05/05 18:07:22 Database URI or name not provided in environment variables
+2025/05/05 18:10:27 main.go:40: Starting application... PID: 29112
+2025/05/05 18:10:27 main.go:41: Build time: 
+2025/05/05 18:10:27 main.go:42: OS: Windows_NT
+2025/05/05 18:10:27 main.go:43: ----Application started successfully----
+2025/05/05 18:10:27 index.go:19: Database URI or name not provided in environment variables
+2025/05/05 18:18:50 main.go:40: Starting application... PID: 12944
+2025/05/05 18:18:50 main.go:41: OS: Windows_NT
+2025/05/05 18:18:50 main.go:42: ----Application started successfully----
+2025/05/05 18:18:50 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/05 18:32:30 main.go:40: Starting application... PID: 11032
+2025/05/05 18:32:30 main.go:41: OS: Windows_NT
+2025/05/05 18:32:30 main.go:42: ----Application started successfully----
+2025/05/05 18:32:30 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/05 18:35:19 main.go:40: Starting application... PID: 28220
+2025/05/05 18:35:19 main.go:41: OS: Windows_NT
+2025/05/05 18:35:19 main.go:42: ----Application started successfully----
+2025/05/05 18:35:19 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/05 18:35:42 main.go:40: Starting application... PID: 416
+2025/05/05 18:35:42 main.go:41: OS: Windows_NT
+2025/05/05 18:35:42 main.go:42: ----Application started successfully----
+2025/05/05 18:35:42 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/05 18:36:34 main.go:40: Starting application... PID: 31160
+2025/05/05 18:36:34 main.go:41: OS: Windows_NT
+2025/05/05 18:36:34 main.go:42: ----Application started successfully----
+2025/05/05 18:36:34 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/05 18:41:27 main.go:40: Starting application... PID: 27576
+2025/05/05 18:41:27 main.go:41: OS: Windows_NT
+2025/05/05 18:41:27 main.go:42: ----Application started successfully----
+2025/05/05 18:41:27 index.go:36: ✅ Connected to MongoDB successfully
