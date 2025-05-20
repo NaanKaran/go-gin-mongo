@@ -1,0 +1,12 @@
+2025/05/13 12:37:16 main.go:40: Starting application... PID: 24492
+2025/05/13 12:37:16 main.go:41: OS: Windows_NT
+2025/05/13 12:37:16 main.go:42: ----Application started successfully----
+2025/05/13 12:37:16 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/13 12:39:42 main.go:40: Starting application... PID: 21388
+2025/05/13 12:39:42 main.go:41: OS: Windows_NT
+2025/05/13 12:39:42 main.go:42: ----Application started successfully----
+2025/05/13 12:39:58 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/13 12:49:45 main.go:40: Starting application... PID: 4504
+2025/05/13 12:49:45 main.go:41: OS: Windows_NT
+2025/05/13 12:49:45 main.go:42: ----Application started successfully----
+2025/05/13 12:49:47 index.go:36: ✅ Connected to MongoDB successfully

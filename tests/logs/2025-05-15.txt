@@ -1,0 +1,13 @@
+2025/05/15 15:04:16 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:05:42 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:09:06 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:09:37 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:09:58 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:49:09 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:50:11 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:50:56 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:51:37 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:57:02 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:57:18 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:57:44 index.go:36: ✅ Connected to MongoDB successfully
+2025/05/15 15:57:52 index.go:36: ✅ Connected to MongoDB successfully

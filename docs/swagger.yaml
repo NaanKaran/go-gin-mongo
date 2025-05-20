@@ -80,6 +80,32 @@ paths:
       summary: Login User
       tags:
       - User
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register User
+      parameters:
+      - description: User Info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Register User
+      tags:
+      - User
 schemes:
 - http
 swagger: "2.0"

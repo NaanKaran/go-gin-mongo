@@ -1,14 +1,23 @@
+// services/user_service.go
 package services
 
 import (
 	"errors"
 	"go-gin-mongo/models"
-	"go-gin-mongo/repositories"
+	repoInterface "go-gin-mongo/repositories/interface"
 	"go-gin-mongo/utils"
 )
 
-func RegisterUser(user models.User) error {
-	existing, _ := repositories.FindUserByEmail(user.Email)
+type UserService struct {
+	repo repoInterface.UserRepository
+}
+
+func NewUserService(repo repoInterface.UserRepository) *UserService {
+	return &UserService{repo}
+}
+
+func (s *UserService) RegisterUser(user models.User) error {
+	existing, _ := s.repo.FindUserByEmail(user.Email)
 	if existing.Email != "" {
 		return errors.New("email already exists")
 	}
@@ -17,29 +26,21 @@ func RegisterUser(user models.User) error {
 		return err
 	}
 	user.Password = hash
-	return repositories.CreateUser(user)
+	return s.repo.CreateUser(user)
 }
 
-func LoginUser(email, password string) (*models.User, error) {
-	user, err := repositories.FindUserByEmail(email)
+func (s *UserService) LoginUser(email, password string) (*models.User, error) {
+	user, err := s.repo.FindUserByEmail(email)
 	if err != nil || !utils.CheckPasswordHash(password, user.Password) {
 		return nil, errors.New("invalid email or password")
 	}
 	return user, nil
 }
 
-func GetAllUsers() ([]models.User, error) {
-	users, err := repositories.GetAllUsers()
-	if err != nil {
-		return nil, err
-	}
-	return users, nil
+func (s *UserService) GetAllUsers() ([]models.User, error) {
+	return s.repo.GetAllUsers()
 }
 
-func GetUserById(id string) (*models.User, error) {
-	user, err := repositories.GetUserById(id)
-	if err != nil {
-		return nil, err
-	}
-	return user, nil
+func (s *UserService) GetUserById(id string) (*models.User, error) {
+	return s.repo.GetUserById(id)
 }

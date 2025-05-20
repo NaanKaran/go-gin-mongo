@@ -1,17 +1,20 @@
 package routes
 
 import (
-	"go-gin-mongo/controllers"
+	"go-gin-mongo/di"
 
 	"github.com/gin-gonic/gin"
 )
 
 func UserRoutes(router *gin.Engine) {
+
+	container := di.InitContainer()
+
 	userGroup := router.Group("/api/users")
 	{
-		userGroup.POST("/register", controllers.Register)
-		userGroup.POST("/login", controllers.Login)
-		userGroup.GET("/", controllers.GetAllUsers)
-		userGroup.GET("/:id", controllers.GetUserById)
+		userGroup.POST("/register", container.UserController.Register)
+		userGroup.POST("/login", container.UserController.Login)
+		userGroup.GET("/", container.UserController.GetAllUsers)
+		userGroup.GET("/:id", container.UserController.GetUserById)
 	}
 }

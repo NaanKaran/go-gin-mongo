@@ -39,3 +39,14 @@ func ConnectDB() {
 func GetCollection(name string) *mongo.Collection {
 	return DB.Collection(name)
 }
+
+func DisconnectDB() {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := DB.Client().Disconnect(ctx); err != nil {
+		logger.Logger.Fatal("MongoDB disconnection error:", err)
+	}
+
+	logger.Logger.Println("✅ Disconnected from MongoDB successfully")
+}

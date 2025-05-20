@@ -2,47 +2,50 @@ package repositories
 
 import (
 	"context"
+	"time"
+
 	"go-gin-mongo/db"
 	"go-gin-mongo/models"
-	"time"
+	repoInterface "go-gin-mongo/repositories/interface"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func FindUserByEmail(email string) (*models.User, error) {
-	collection := db.GetCollection("users")
+type userRepo struct {
+	collection *mongo.Collection
+}
 
+func NewUserRepository() repoInterface.UserRepository {
+	return &userRepo{
+		collection: db.GetCollection("users"),
+	}
+}
+
+func (r *userRepo) FindUserByEmail(email string) (*models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
 	var user models.User
-	err := collection.FindOne(ctx, bson.M{"email": email}).Decode(&user)
+	err := r.collection.FindOne(ctx, bson.M{"email": email}).Decode(&user)
 	return &user, err
 }
 
-func CreateUser(user models.User) error {
-	collection := db.GetCollection("users")
-
+func (r *userRepo) CreateUser(user models.User) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
-	_, err := collection.InsertOne(ctx, user)
+	_, err := r.collection.InsertOne(ctx, user)
 	return err
 }
 
-func GetAllUsers() ([]models.User, error) {
-	collection := db.GetCollection("users")
-
+func (r *userRepo) GetAllUsers() ([]models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
-	cursor, err := collection.Find(ctx, bson.M{})
+	cursor, err := r.collection.Find(ctx, bson.M{})
 	if err != nil {
 		return nil, err
 	}
 	defer cursor.Close(ctx)
-
 	var users []models.User
 	for cursor.Next(ctx) {
 		var user models.User
@@ -54,22 +57,14 @@ func GetAllUsers() ([]models.User, error) {
 	return users, nil
 }
 
-func GetUserById(id string) (*models.User, error) {
-	collection := db.GetCollection("users")
-
-	// Convert id string to ObjectID
-	objID, err := primitive.ObjectIDFromHex(id)
-	if err != nil {
-		return nil, err // return error if id is not valid hex
-	}
-
+func (r *userRepo) GetUserById(id string) (*models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
-	var user models.User
-	err = collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&user)
+	objID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return nil, err
 	}
+	var user models.User
+	err = r.collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&user)
 	return &user, err
 }
